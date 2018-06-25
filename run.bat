@@ -1,0 +1,1 @@
+D:\Herramientas\Anaconda\python.exe -m pelican.server
