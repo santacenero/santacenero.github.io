@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Richardson</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/all-en.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2010-12-03T10:20:00-05:00</updated><entry><title>Entrada 1</title><link href="http://localhost:8000/entrada-1.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-12-03T10:20:00-05:00</updated><author><name>Kevin Richardson</name></author><id>tag:localhost,2010-12-03:/entrada-1.html</id><summary type="html">&lt;p&gt;Prueba de codigo&lt;/p&gt;
+&lt;p&gt;﻿&lt;strong&gt;Simple SELECT e iteración&lt;/strong&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;var groupings = from b in dbAux.groupings
+                            where b.TXT_HEADER != &amp;quot;&amp;quot;
+                            select b;
+
+            //var groupings = from b in dbAux.groupings                        
+            //                select b;
+
+
+            //foreach (var g in groupings)
+            //{
+            //    dictionary.Add(g.TXT_GROUPING, g.idGROUPING);
+            //}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"&gt;&lt;/script&gt;
+
+&lt;div id="app-5"&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;button v-on:click="reverseMessage"&gt;Reverse Message&lt;/button&gt;
+  &lt;button v-on:click="diHola"&gt;Saluda&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+var app5 = new Vue({
+  el: '#app-5',
+  data …&lt;/script&gt;</summary><content type="html">&lt;p&gt;Prueba de codigo&lt;/p&gt;
+&lt;p&gt;﻿&lt;strong&gt;Simple SELECT e iteración&lt;/strong&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;var groupings = from b in dbAux.groupings
+                            where b.TXT_HEADER != &amp;quot;&amp;quot;
+                            select b;
+
+            //var groupings = from b in dbAux.groupings                        
+            //                select b;
+
+
+            //foreach (var g in groupings)
+            //{
+            //    dictionary.Add(g.TXT_GROUPING, g.idGROUPING);
+            //}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"&gt;&lt;/script&gt;
+
+&lt;div id="app-5"&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;button v-on:click="reverseMessage"&gt;Reverse Message&lt;/button&gt;
+  &lt;button v-on:click="diHola"&gt;Saluda&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Hello Vue.js!'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    },
+    diHola: function () {
+      this.message = "Hola mundo!"
+    },  
+  }
+
+})
+&lt;/script&gt;</content></entry><entry><title>My First Review</title><link href="http://localhost:8000/my-first-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-12-03T10:20:00-05:00</updated><author><name>Kevin Richardson</name></author><id>tag:localhost,2010-12-03:/my-first-review.html</id><summary type="html">&lt;p&gt;Following is a review of my favorite mechanical keyboard.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Following is a review of my favorite mechanical keyboard.&lt;/p&gt;</content></entry></feed>
