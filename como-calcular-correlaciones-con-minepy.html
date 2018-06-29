@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-XXXXXX-X', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Santacenero" />
+<meta name="description" content="Cálculo de la correlación no lineal usando el coeficiente MIC" />
+<meta name="keywords" content="python">
+
+<meta property="og:site_name" content="Codificando"/>
+<meta property="og:title" content="Cómo calcular correlaciones con MinePy"/>
+<meta property="og:description" content="Cálculo de la correlación no lineal usando el coeficiente MIC"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/como-calcular-correlaciones-con-minepy.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-06-29 10:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/santacenero.html">
+<meta property="article:section" content="modelos"/>
+<meta property="article:tag" content="python"/>
+<meta property="og:image" content="https://cdn.static-economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png">
+
+  <title>Codificando &ndash; Cómo calcular correlaciones con MinePy</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="https://cdn.static-economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png" alt="Codificando" title="Codificando">
+      </a>
+      <h1><a href="">Codificando</a></h1>
+
+<p>Cosas que leo, investigo y codifico</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/acerca.html#acerca">Acerca</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/santacenero" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/santacenero" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-facebook" href="//facebook.com/santacenero" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        <li><a class="sc-instagram" href="https://instagram.com/santacenero" target="_blank"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="como-calcular-correlaciones-con-minepy">Cómo calcular correlaciones con MinePy</h1>
+    <p>
+          Posted on vie 29 junio 2018 in <a href="/category/modelos.html">modelos</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Hace unos años unos investigadores de varias universidades crearon un nuevo algoritmo para detectar y cuantificar automáticamente cualquier relación en un conjunto de datos. Para ello usaron un nuevo coeficiente llamado <a href="http://www.exploredata.net/">MIC</a> (Coeficiente de Información Máxima), mucho más robusto que el tradicional pearson.</p>
+<p>Según dice el abstract de su <a href="http://science.sciencemag.org/content/334/6062/1518.full?ijkey=cRCIlh2G7AjiA&amp;keytype=ref&amp;siteid=sci">paper</a>:</p>
+<blockquote>
+<p>Identificar relaciones interesantes entre pares de variables en grandes conjuntos de datos es cada vez más importante. Aquí presentamos una medida de dependencia para relaciones de dos variables: el coeficiente de información máxima (MIC). El MIC captura una amplia gama de asociaciones tanto funcionales como no funcionales, y para las relaciones funcionales proporciona una puntuación que equivale aproximadamente al coeficiente de determinación (R2) de los datos relativos a la función de regresión. El MIC pertenece a una clase más amplia de estadísticas de exploración no paramétrica (MINE) basadas en información máxima para identificar y clasificar las relaciones. Aplicamos MIC y MINE a conjuntos de datos sobre salud global, expresión génica, béisbol de las grandes ligas y la microbiota intestinal humana, e identificamos relaciones conocidas y novedosas.</p>
+</blockquote>
+<p>Existe una librería en python para calcular correlaciones usando este parámetro. Es muy útil cuando nos enfrentamos a pares de datos que puede que tengan correlación no lineal. Con el tradicional coeficiente de pearson no lo detectaríamos.</p>
+<p><img alt="Pearson VS MIC" src="/images/MIC-2.jpg"></p>
+<div class="highlight"><pre><span></span>pip install minepy
+</pre></div>
+
+
+<p>Su uso es muy sencillo. En el siguiente ejemplo vamos a calcular el MIC de una función exponencial.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">minepy</span> <span class="kn">import</span> <span class="n">MINE</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">mine</span> <span class="o">=</span> <span class="n">MINE</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">est</span><span class="o">=</span><span class="s2">&quot;mic_approx&quot;</span><span class="p">)</span>
+<span class="n">mine</span><span class="o">.</span><span class="n">compute_score</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">print</span> <span class="s2">&quot;MIC: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mine</span><span class="o">.</span><span class="n">mic</span><span class="p">())</span>
+<span class="k">print</span> <span class="s2">&quot;PEARSON: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">line</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="Funcion exponencial" src="/images/MIC-1.png"></p>
+<div class="highlight"><pre><span></span><span class="n">MIC</span><span class="o">:</span> <span class="mf">1.0</span>
+<span class="n">PEARSON</span><span class="o">:</span> <span class="mf">0.6931106944301525</span>
+</pre></div>
+
+
+<p>Como vemos, MIC nos dice que hay una correlación muy fuerte, mientras PEARSON no. </p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/python.html">python</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'test-test';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Codificando ",
+  "url" : "",
+  "image": "https://cdn.static-economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

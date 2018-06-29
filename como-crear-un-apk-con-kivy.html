@@ -31,18 +31,25 @@
 </script>
 <!-- End Google Analytics -->
 
-    <meta name="author" content="santacenero" />
-    <meta name="description" content="" />
+<meta name="author" content="Santacenero" />
+<meta name="description" content="Esto es lo que tienes que hacer para generar un apk Android a partir de una aplicación kivy." />
+<meta name="keywords" content="python, kivy">
+
 <meta property="og:site_name" content="Codificando"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Codificando"/>
-<meta property="og:description" content=""/>
+<meta property="og:title" content="Como crear un apk con Kivy"/>
+<meta property="og:description" content="Esto es lo que tienes que hacer para generar un apk Android a partir de una aplicación kivy."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content=""/>
+<meta property="og:url" content="/como-crear-un-apk-con-kivy.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-06-29 10:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/santacenero.html">
+<meta property="article:section" content="programacion"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="kivy"/>
 <meta property="og:image" content="https://cdn.static-economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png">
 
-  <title>Codificando &ndash;     Authors
-</title>
+  <title>Codificando &ndash; Como crear un apk con Kivy</title>
 
 </head>
 <body>
@@ -86,14 +93,69 @@
 
 <article class="single">
   <header>
-    <h1>    Authors
-</h1>
+      
+    <h1 id="como-crear-un-apk-con-kivy">Como crear un apk con Kivy</h1>
+    <p>
+          Posted on vie 29 junio 2018 in <a href="/category/programacion.html">programacion</a>
+
+
+    </p>
   </header>
+
+
   <div>
-    <ul class="list">
-      <li><a href="/author/santacenero.html">Santacenero</a> (3)</li>
-    </ul>
+    <p>Generar una aplicación Android a partir de una aplicación kivy es bastante sencillo.</p>
+<p>Tienes que hacer lo siguiente:</p>
+<ol>
+<li>Descargar VirtualBox</li>
+<li>Descargar la imagen de la VM de Buildozer. Ahí tendrás un Linux preparado para generar los apk.</li>
+<li>Importar la imagen a VirtualBox</li>
+<li>Crear una carpeta en el HOST y compartirla con la máquina virtual. Especificar que se monte automáticamente.</li>
+<li>Ya en la máquina virtual, y logueado con kivy/kivy ir a la carpeta compartida donde estará tu código kivy/kivy</li>
+<li>Ejecutar:</li>
+</ol>
+<div class="highlight"><pre><span></span>buildozer init
+</pre></div>
+
+
+<ol>
+<li>Ejecutar (la primera vez tardará mucho porque se descargará el SDK de Android y todo lo necesario).</li>
+</ol>
+<div class="highlight"><pre><span></span>buildozer -v android debug logcat
+</pre></div>
+
+
+<ol>
+<li>El apk estará en la carpeta bin. </li>
+</ol>
+<p>Ya solo te falta llevártelo a tu dispositivo móvil e instalarlo.</p>
   </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/python.html">python</a>
+      <a href="/tag/kivy.html">kivy</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'test-test';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>
